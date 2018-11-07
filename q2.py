@@ -15,20 +15,20 @@ positive_class = train.loc[train[1594] == 1]
 ppb =[[0 for x in range(29)] for y in range(1594)]  #positive class probabilities
 npb =[[0 for x in range(29)] for y in range(1594)] #negative class probabilities
 
-# for i in range(1,1594):
-#     for j in range(0,29):
-#         cnt = 0
-#         for x in range(0,795):
-#             if negative_class.loc[x , i]> 5*j and negative_class.loc[x , i] < 5*j+5 :
-#                 cnt +=1    
-#         npb[i][j] = (cnt+1)/795 #p_class= -1 => 795
+for i in range(1,1594):
+    for j in range(0,29):
+        cnt = 0
+        for x in range(0,795):
+            if negative_class.loc[x , i]> 5*j and negative_class.loc[x , i] < 5*j+5 :
+                cnt +=1    
+        npb[i][j] = (cnt+1)/795 #p_class= -1 => 795
 
-#     for j in range(0,29):
-#         cnt = 0
-#         for x in range(795,1599):
-#             if  positive_class.loc[x , i] > 5*j and positive_class.loc[x , i] < 5*j+5 :
-#                 cnt +=1    
-#         ppb[i][j] = (cnt+1)/804 #p_class= -1 => 804
+    for j in range(0,29):
+        cnt = 0
+        for x in range(795,1599):
+            if  positive_class.loc[x , i] > 5*j and positive_class.loc[x , i] < 5*j+5 :
+                cnt +=1    
+        ppb[i][j] = (cnt+1)/804 #p_class= -1 => 804
 
 test = pandas.read_csv('test.csv')
 test.columns = column_name
